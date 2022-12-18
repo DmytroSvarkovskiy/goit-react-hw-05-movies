@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { fetch } from '../../components/Fetch';
 const topFilms =
   'https://api.themoviedb.org/3/trending/all/day?api_key=7bfeb33324f72574136d1cd14ae769b5';
@@ -9,7 +10,7 @@ const Home = () => {
     useEffect(() => {
       const getTop = async () => {
         const filmList = await fetch(topFilms);
-        setFilms(filmList.hits);
+        setFilms(filmList.results);
       };
       getTop();
     }, []);
@@ -18,7 +19,11 @@ const Home = () => {
   }
   return (
     <ul>
-      <li>lalalla</li>
+      {films.map(({ title, id }) => (
+        <li key={id}>
+          <Link>{title}</Link>
+        </li>
+      ))}
     </ul>
   );
 };
