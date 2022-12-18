@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { FilmList, LinkItem, Title, Wrapper } from './Home.styled';
+
 import { fetch } from '../../components/Fetch';
 const topFilms =
   'https://api.themoviedb.org/3/trending/all/day?api_key=7bfeb33324f72574136d1cd14ae769b5';
@@ -14,17 +15,28 @@ const Home = () => {
       };
       getTop();
     }, []);
-  } catch {
+  } catch (error) {
+    console.log(error);
     setError(true);
   }
+
   return (
-    <ul>
-      {films.map(({ title, id }) => (
-        <li key={id}>
-          <Link>{title}</Link>
-        </li>
-      ))}
-    </ul>
+    <Wrapper>
+      {error ? (
+        <h2>Sorry, something went wrong</h2>
+      ) : (
+        <>
+          <Title>Trending Today</Title>
+          <FilmList>
+            {films.map(({ id, name, title }) => (
+              <li key={id}>
+                <LinkItem>{title ?? name}</LinkItem>
+              </li>
+            ))}
+          </FilmList>
+        </>
+      )}
+    </Wrapper>
   );
 };
 export default Home;

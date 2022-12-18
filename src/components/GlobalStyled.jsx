@@ -11,6 +11,8 @@ export const GlobalStyle = createGlobalStyle`
 *::after {
   box-sizing: inherit;
 }
+a{text-decoration:none;
+color:#212121}
 body {
   overflow:hidden;
   margin: 0;
