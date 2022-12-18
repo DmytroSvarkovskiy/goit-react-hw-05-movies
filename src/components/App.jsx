@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyled';
 import { SharedLayout } from './Sharedlayout.jsx/SharedLayout';
-import { Home } from '../Pages/Home/Home';
+import Home from '../Pages/Home/Home';
 export const App = () => {
   return (
     <>
@@ -10,7 +10,7 @@ export const App = () => {
           <Route index element={<Home />} />
         </Route>
       </Routes>
-      <GlobalStyle />
+      {/* <GlobalStyle /> */}
     </>
   );
 };
