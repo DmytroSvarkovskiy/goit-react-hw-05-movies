@@ -32,7 +32,7 @@ const Home = () => {
           <FilmList>
             {films.map(({ id, name, title, poster_path }) => (
               <Item key={id}>
-                <LinkItem>
+                <LinkItem to="/movies/:Id">
                   {' '}
                   <Img
                     src={poster_path ? firstImgLink + poster_path : defaultImg}
