@@ -65,7 +65,7 @@ const Movies = () => {
           {searchres !== [] &&
             searchres.map(({ id, name, title, poster_path }) => (
               <Item key={id}>
-                <LinkItem>
+                <LinkItem to="/moviedetails">
                   {' '}
                   <Img
                     src={poster_path ? imgLink + poster_path : defaultImg}
