@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 export const FilmList = styled.ul`
   display: grid;
   gap: 10px;
-  /* flex-wrap: wrap; */
   grid-template-columns: 300px 300px 300px;
   justify-content: center;
   row-gap: 20px;

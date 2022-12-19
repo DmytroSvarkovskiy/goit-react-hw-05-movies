@@ -2,13 +2,15 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Nav = styled.nav`
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 600;
   height: 60px;
   display: flex;
   gap: 35px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 `;
 export const Link = styled(NavLink)`
   &.active {
