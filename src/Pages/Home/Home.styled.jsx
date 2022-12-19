@@ -11,6 +11,7 @@ export const LinkItem = styled(Link)`
   :hover {
     color: red;
   }
+  transition: all 0.3s;
 `;
 export const Title = styled.h2`
   margin-bottom: 15px;
