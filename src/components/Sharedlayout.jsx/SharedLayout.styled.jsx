@@ -18,6 +18,6 @@ export const Link = styled(NavLink)`
 `;
 export const Container = styled.div`
   margin: 0 auto;
-  width: 1200px;
+  width: 980px;
   padding: 0 15px;
 `;

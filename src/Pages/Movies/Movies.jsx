@@ -5,13 +5,13 @@ import { fetch } from 'components/Fetch';
 import { useEffect } from 'react';
 import { FilmList, Item, LinkItem, Img } from 'Pages/Home/Home.styled';
 import { Form, Label } from './Movies.styled';
-import(Form);
+
 const Movies = () => {
   const [qwery, setQwery] = useState('');
   const [searchres, setSearchres] = useState([]);
   const [error, setError] = useState(false);
   const { register, handleSubmit } = useForm();
-  const firstImgLink = 'https://image.tmdb.org/t/p/w300';
+  const imgLink = 'https://image.tmdb.org/t/p/w300';
   const defaultImg = `https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-no-image-available-icon-flat.jpg`;
   const findFilms = `https://api.themoviedb.org/3/search/movie?api_key=7bfeb33324f72574136d1cd14ae769b5&language=en-US&query=${qwery}&page=1&include_adult=false`;
   const onSubmit = value => {
@@ -56,7 +56,7 @@ const Movies = () => {
                 <LinkItem>
                   {' '}
                   <Img
-                    src={poster_path ? firstImgLink + poster_path : defaultImg}
+                    src={poster_path ? imgLink + poster_path : defaultImg}
                     alt={name}
                     loading="lazy"
                   />
