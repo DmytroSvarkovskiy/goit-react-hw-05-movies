@@ -1,7 +1,5 @@
 import axios from 'axios';
-// const topFilms =
-//   'https://api.themoviedb.org/3/trending/all/day?api_key=7bfeb33324f72574136d1cd14ae769b5';
-// const findFilms = `https://api.themoviedb.org/3/search/movie?api_key=7bfeb33324f72574136d1cd14ae769b5&language=en-US&query=${word}&page=1&include_adult=false`;
+
 // const fullInfo = `
 // https://api.themoviedb.org/3/movie/${movie_id}?api_key=7bfeb33324f72574136d1cd14ae769b5&language=en-US`;
 // const actorsList = `

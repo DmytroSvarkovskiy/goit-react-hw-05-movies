@@ -30,12 +30,12 @@ const Home = () => {
         <>
           <Title>Trending Today</Title>
           <FilmList>
-            {films.map(({ id, name, title, poster_path = defaultImg }) => (
+            {films.map(({ id, name, title, poster_path }) => (
               <Item key={id}>
                 <LinkItem>
                   {' '}
                   <Img
-                    src={firstImgLink + poster_path}
+                    src={poster_path ? firstImgLink + poster_path : defaultImg}
                     alt={name}
                     loading="lazy"
                   />
