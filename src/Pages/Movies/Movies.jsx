@@ -17,6 +17,9 @@ const Movies = () => {
   const onSubmit = value => {
     setError(false);
     setSearchres([]);
+    if (qwery === value.name) {
+      return;
+    }
     setQwery(value.name);
   };
   useEffect(() => {
@@ -27,8 +30,8 @@ const Movies = () => {
       try {
         const getTop = await fetch(findFilms);
         setSearchres(getTop.results);
-      } catch (error) {
-        console.log(error);
+      } catch {
+        setError(true);
       }
     };
     getApi();
