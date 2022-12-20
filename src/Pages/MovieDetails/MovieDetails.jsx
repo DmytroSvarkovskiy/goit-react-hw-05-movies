@@ -55,42 +55,39 @@ const MovieDetails = () => {
   }
   return (
     <Wrapper>
-      {error && <h2>Sorry, something went wrong. Please try again</h2>}
+      {loader && <Loader />}
       <Button>
         <Arrow />
         Go back
       </Button>
+      {error && <h2>Sorry, something went wrong. Please try again</h2>}
 
-      {loader ? (
-        <Loader />
-      ) : (
-        <>
-          <Wrap>
-            <Img
-              src={poster_path ? firstImgLink + poster_path : defaultImg}
-              alt={title ?? name}
-            />
-            <Cont>
-              <h3>
-                {title ?? name} ({release_date.slice(0, 4)})
-              </h3>
-              <P>User Score: {(vote_average * 10).toFixed(1)}%</P>
-              <h4>Overview</h4>
-              <P>{overview}</P>
-              <h4>Genres</h4>
-              <P>{genres.map(({ name }) => name).join(', ')}</P>
-            </Cont>
-          </Wrap>
-          <AdditionalDiv>
-            <h4>Additional Information</h4>
-            <LinkDiv>
-              <LinkInfo to="cast">Cast</LinkInfo>
-              <LinkInfo to="reviews">Reviews</LinkInfo>
-            </LinkDiv>
-          </AdditionalDiv>
-          <Outlet />
-        </>
-      )}
+      <>
+        <Wrap>
+          <Img
+            src={poster_path ? firstImgLink + poster_path : defaultImg}
+            alt={title ?? name}
+          />
+          <Cont>
+            <h3>
+              {title ?? name} ({release_date.slice(0, 4)})
+            </h3>
+            <P>User Score: {(vote_average * 10).toFixed(1)}%</P>
+            <h4>Overview</h4>
+            <P>{overview}</P>
+            <h4>Genres</h4>
+            <P>{genres.map(({ name }) => name).join(', ')}</P>
+          </Cont>
+        </Wrap>
+        <AdditionalDiv>
+          <h4>Additional Information</h4>
+          <LinkDiv>
+            <LinkInfo to="cast">Cast</LinkInfo>
+            <LinkInfo to="reviews">Reviews</LinkInfo>
+          </LinkDiv>
+        </AdditionalDiv>
+        <Outlet />
+      </>
     </Wrapper>
   );
 };

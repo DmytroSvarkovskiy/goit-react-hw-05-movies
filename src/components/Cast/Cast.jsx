@@ -29,27 +29,25 @@ const Cast = () => {
 
   return (
     <>
-      {error ? (
-        <h2>Sorry, something went wrong. Please try again</h2>
-      ) : (
-        <List>
-          {loader ? (
-            <Loader />
-          ) : (
-            cast.map(({ id, character, name, profile_path }) => (
-              <Item key={id}>
-                <Img
-                  loading="lazy"
-                  src={profile_path ? firstImgLink + profile_path : defaultImg}
-                  alt={name}
-                />
-                <P>{name}</P>
-                <P>Character: {character}</P>
-              </Item>
-            ))
-          )}
-        </List>
-      )}{' '}
+      {error && <h2>Sorry, something went wrong. Please try again</h2>}
+
+      <List>
+        {loader ? (
+          <Loader />
+        ) : (
+          cast.map(({ id, character, name, profile_path }) => (
+            <Item key={id}>
+              <Img
+                loading="lazy"
+                src={profile_path ? firstImgLink + profile_path : defaultImg}
+                alt={name}
+              />
+              <P>{name}</P>
+              <P>Character: {character}</P>
+            </Item>
+          ))
+        )}
+      </List>
     </>
   );
 };
