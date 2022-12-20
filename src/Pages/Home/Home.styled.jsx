@@ -9,7 +9,7 @@ export const FilmList = styled.ul`
 `;
 export const LinkItem = styled(Link)`
   :hover {
-    color: red;
+    color: orange;
   }
   transition: all 0.3s;
 `;
@@ -24,6 +24,8 @@ export const Wrapper = styled.div`
 `;
 export const Item = styled.li`
   width: 300px;
+  font-size: 18px;
+  font-weight: 500;
 `;
 export const Img = styled.img`
   border-radius: 1.3em;
