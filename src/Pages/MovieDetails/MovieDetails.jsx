@@ -3,7 +3,17 @@ import { useState, useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import { fetch } from 'components/Fetch';
 import Loader from '../../components/Loader/Loader';
-import { Arrow, Button, Wrap, Cont, P, Img } from './MovieDetails.styled';
+import {
+  Arrow,
+  Button,
+  Wrap,
+  Cont,
+  P,
+  Img,
+  AdditionalDiv,
+  LinkDiv,
+  LinkInfo,
+} from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [fullInfo, setFullInfo] = useState({});
@@ -65,18 +75,22 @@ const MovieDetails = () => {
                 {title ?? name} ({release_date.slice(0, 4)})
               </h3>
               <P>User Score: {(vote_average * 10).toFixed(1)}%</P>
-              <h3>Overview</h3>
+              <h4>Overview</h4>
               <P>{overview}</P>
-              <h3>Genres</h3>
+              <h4>Genres</h4>
               <P>{genres.map(({ name }) => name).join(', ')}</P>
             </Cont>
           </Wrap>
-          <div>
-            <h3>Additional Information</h3>
-          </div>
+          <AdditionalDiv>
+            <h4>Additional Information</h4>
+            <LinkDiv>
+              <LinkInfo to="cast">Cast</LinkInfo>
+              <LinkInfo to="reviews">Reviews</LinkInfo>
+            </LinkDiv>
+          </AdditionalDiv>
+          <Outlet />
         </>
       )}
-      <Outlet />
     </Wrapper>
   );
 };
