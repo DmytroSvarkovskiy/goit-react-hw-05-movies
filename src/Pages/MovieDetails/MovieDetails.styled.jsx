@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BiArrowBack } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 export const Arrow = styled(BiArrowBack)`
   margin-right: 5px;
 `;
@@ -29,7 +29,8 @@ export const Wrap = styled.div`
   display: flex;
   gap: 30px;
   margin-bottom: 15px;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 1.2em;
 `;
 export const Cont = styled.div`
   display: flex;
@@ -43,13 +44,14 @@ export const P = styled.p`
 `;
 export const Img = styled.img`
   object-fit: cover;
-  border-radius: 1.25em;
-  width: 200px;
+  border-radius: 1.2em;
+  width: 300px;
 `;
 export const AdditionalDiv = styled.div`
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 15px;
+  border-radius: 1.2em;
 `;
 export const LinkDiv = styled.div`
   display: flex;
@@ -57,7 +59,7 @@ export const LinkDiv = styled.div`
   gap: 20px;
   margin-top: 15px;
 `;
-export const LinkInfo = styled(Link)`
+export const LinkInfo = styled(NavLink)`
   background-color: #e9e8e8f5;
   width: 70px;
   display: flex;
@@ -69,5 +71,9 @@ export const LinkInfo = styled(Link)`
     background-color: orange;
     color: #ffffff;
     transition: all 0.3s;
+  }
+  &.active {
+    background-color: orange;
+    box-shadow: 0 2px 4px orange;
   }
 `;
