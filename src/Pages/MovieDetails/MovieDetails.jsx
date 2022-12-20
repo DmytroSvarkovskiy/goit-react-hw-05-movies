@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import { fetch } from 'components/Fetch';
 import Loader from '../../components/Loader/Loader';
-import { Arrow, Button } from './MovieDetails.styled';
+import { Arrow, Button, Wrap, Cont, P, Img } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [fullInfo, setFullInfo] = useState({});
@@ -22,7 +22,7 @@ const MovieDetails = () => {
       try {
         const getInfo = await fetch(fullInfoLink);
         setFullInfo(getInfo);
-      } catch (error) {
+      } catch {
         setError(true);
       } finally {
         setLoader(false);
@@ -45,27 +45,37 @@ const MovieDetails = () => {
   }
   return (
     <Wrapper>
+      {error && <h2>Sorry, something went wrong. Please try again</h2>}
       <Button>
         <Arrow />
         Go back
       </Button>
+
       {loader ? (
         <Loader />
       ) : (
-        <div>
-          <img
-            src={poster_path ? firstImgLink + poster_path : defaultImg}
-            alt={title ?? name}
-          />
+        <>
+          <Wrap>
+            <Img
+              src={poster_path ? firstImgLink + poster_path : defaultImg}
+              alt={title ?? name}
+            />
+            <Cont>
+              <h3>
+                {title ?? name} ({release_date.slice(0, 4)})
+              </h3>
+              <P>User Score: {(vote_average * 10).toFixed(1)}%</P>
+              <h3>Overview</h3>
+              <P>{overview}</P>
+              <h3>Genres</h3>
+              <P>{genres.map(({ name }) => name).join(', ')}</P>
+            </Cont>
+          </Wrap>
           <div>
-            <h2>
-              {title ?? name} ({release_date.slice(0, 4)})
-            </h2>
-            <p> </p>
+            <h3>Additional Information</h3>
           </div>
-        </div>
+        </>
       )}
-
       <Outlet />
     </Wrapper>
   );

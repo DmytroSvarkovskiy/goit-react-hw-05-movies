@@ -24,3 +24,20 @@ export const Button = styled.button`
   }
   margin-bottom: 15px;
 `;
+export const Wrap = styled.div`
+  display: flex;
+  gap: 30px;
+`;
+export const Cont = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+`;
+export const P = styled.p`
+  font-size: 18px;
+  letter-spacing: 0.6;
+`;
+export const Img = styled.img`
+  object-fit: cover;
+  border-radius: 1.25em;
+`;
