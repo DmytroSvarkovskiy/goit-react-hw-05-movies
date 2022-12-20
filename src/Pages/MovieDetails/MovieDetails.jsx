@@ -30,13 +30,41 @@ const MovieDetails = () => {
     };
     getApi();
   }, [id]);
+  const {
+    poster_path,
+    name,
+    genres,
+    overview,
+    vote_average,
+    title,
+    release_date,
+  } = fullInfo;
+
+  if (!release_date) {
+    return;
+  }
   return (
     <Wrapper>
       <Button>
         <Arrow />
         Go back
       </Button>
-      {loader && <Loader />}
+      {loader ? (
+        <Loader />
+      ) : (
+        <div>
+          <img
+            src={poster_path ? firstImgLink + poster_path : defaultImg}
+            alt={title ?? name}
+          />
+          <div>
+            <h2>
+              {title ?? name} ({release_date.slice(0, 4)})
+            </h2>
+            <p> </p>
+          </div>
+        </div>
+      )}
 
       <Outlet />
     </Wrapper>

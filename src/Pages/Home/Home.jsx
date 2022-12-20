@@ -8,7 +8,7 @@ const Home = () => {
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
   const topFilms =
-    'https://api.themoviedb.org/3/trending/all/day?api_key=7bfeb33324f72574136d1cd14ae769b5';
+    'https://api.themoviedb.org/3/trending/movie/day?api_key=7bfeb33324f72574136d1cd14ae769b5';
   const firstImgLink = 'https://image.tmdb.org/t/p/w300';
   const defaultImg = `https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-no-image-available-icon-flat.jpg`;
   useEffect(() => {
