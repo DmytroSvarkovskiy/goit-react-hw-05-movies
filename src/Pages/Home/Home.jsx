@@ -37,25 +37,27 @@ const Home = () => {
             <Loader />
           ) : (
             <FilmList>
-              {films.map(({ id, name, title, poster_path, release_date }) => (
-                <Item key={id}>
-                  <LinkItem to={`/movies/${id}`} state={{ from: '/' }}>
-                    {' '}
-                    <Img
-                      src={
-                        poster_path ? firstImgLink + poster_path : defaultImg
-                      }
-                      alt={name}
-                      loading="lazy"
-                    />
-                    {title ?? name} (
-                    {release_date !== ''
-                      ? release_date.slice(0, 4)
-                      : 'unknown year'}
-                    )
-                  </LinkItem>
-                </Item>
-              ))}
+              {films.map(
+                ({ id, name, title, poster_path, release_date = [] }) => (
+                  <Item key={id}>
+                    <LinkItem to={`/movies/${id}`} state={{ from: '/' }}>
+                      {' '}
+                      <Img
+                        src={
+                          poster_path ? firstImgLink + poster_path : defaultImg
+                        }
+                        alt={name}
+                        loading="lazy"
+                      />
+                      {title ?? name} (
+                      {release_date !== ''
+                        ? release_date.slice(0, 4)
+                        : 'unknown year'}
+                      )
+                    </LinkItem>
+                  </Item>
+                )
+              )}
             </FilmList>
           )}
         </>

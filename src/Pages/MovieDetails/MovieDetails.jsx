@@ -77,7 +77,11 @@ const MovieDetails = () => {
             <h4>Overview</h4>
             <P>{overview}</P>
             <h4>Genres</h4>
-            <P>{genres.map(({ name }) => name).join(', ')}</P>
+            <P>
+              {genres.length
+                ? genres.map(({ name }) => name).join(', ')
+                : 'unknown genres'}
+            </P>
           </Cont>
         </Wrap>
         <AdditionalDiv>
