@@ -19,7 +19,7 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams({});
   const searchName = searchParams.get('search') ?? '';
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const imgLink = 'https://image.tmdb.org/t/p/w300';
   const defaultImg = `https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-no-image-available-icon-flat.jpg`;
   const location = useLocation();
@@ -28,6 +28,7 @@ const Movies = () => {
     if (qwery === value.name) {
       return;
     }
+    reset();
     setError(false);
     setSearchres([]);
     setSearchParams({ search: value.name });
