@@ -8,7 +8,8 @@ import { FilmList, Item, LinkItem, Img } from 'Pages/Home/Home.styled';
 import { Form, Input, Button, Label } from './Movies.styled';
 import Loader from 'components/Loader/Loader';
 import { useLocation } from 'react-router-dom';
-// import { useMemo } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Movies = () => {
   const [qwery, setQwery] = useState('');
@@ -21,11 +22,7 @@ const Movies = () => {
   const { register, handleSubmit } = useForm();
   const imgLink = 'https://image.tmdb.org/t/p/w300';
   const defaultImg = `https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-no-image-available-icon-flat.jpg`;
-  const findFilms = `https://api.themoviedb.org/3/search/movie?api_key=7bfeb33324f72574136d1cd14ae769b5&language=en-US&query=${qwery}&page=1&include_adult=false`;
   const location = useLocation();
-  // useMemo(() => {
-  //   console.log(location);
-  // }, [location]);
 
   const onSubmit = value => {
     if (qwery === value.name) {
@@ -38,6 +35,7 @@ const Movies = () => {
   };
   useEffect(() => {
     setQwery(searchName);
+    const findFilms = `https://api.themoviedb.org/3/search/movie?api_key=7bfeb33324f72574136d1cd14ae769b5&language=en-US&query=${qwery}&page=1&include_adult=false`;
 
     if (!qwery) {
       return;
@@ -47,6 +45,8 @@ const Movies = () => {
       try {
         const getTop = await fetch(findFilms);
         setSearchres(getTop.results);
+
+        getTop.total_results === 0 && toast("Sorry,we didn't find anything");
       } catch {
         setError(true);
       } finally {
@@ -54,7 +54,7 @@ const Movies = () => {
       }
     };
     getApi();
-  }, [findFilms, qwery, searchName]);
+  }, [qwery, searchName]);
   return (
     <Wrapper>
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -69,6 +69,7 @@ const Movies = () => {
           <Button type="submit">Search</Button>
         </div>
       </Form>
+      <ToastContainer />
       {loader && <Loader />}
       {error ? (
         <h2>Sorry, something went wrong. Please try again</h2>

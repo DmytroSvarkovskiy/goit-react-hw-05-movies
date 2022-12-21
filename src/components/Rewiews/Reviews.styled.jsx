@@ -5,3 +5,6 @@ export const Item = styled.li`
   gap: 10px;
   margin-bottom: 15px;
 `;
+export const Title = styled.h3`
+  text-align: center;
+`;

@@ -31,12 +31,12 @@ const Cast = () => {
 
   return (
     <>
-      {/* {loading && <Loader />} */}
+      {loader && <Loader />}
 
-      {/* {error && <h2>Sorry, something went wrong. Please try again</h2>} */}
+      {error && <h2>Sorry, something went wrong. Please try again</h2>}
       <List>
-        {loader ? (
-          <Loader />
+        {cast.length === 0 && !loader ? (
+          <h3>Sorry, we didn't find anything</h3>
         ) : (
           cast.map(({ id, character, name, profile_path }) => (
             <Item key={id}>

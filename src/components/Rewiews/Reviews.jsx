@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { fetch } from 'components/Fetch';
 import { useState, useEffect } from 'react';
-import { Item } from './Reviews.styled';
+import { Item, Title } from './Reviews.styled';
 import Loader from 'components/Loader/Loader';
 
 const Reviews = () => {
@@ -31,7 +31,7 @@ const Reviews = () => {
     <div>
       {loading && <Loader />}
       {reviews.length === 0 && !loading ? (
-        <h3>Sorry, we didn't find anything</h3>
+        <Title>Sorry, we didn't find anything</Title>
       ) : (
         <ul>
           {reviews.map(({ author, content, id }) => (
