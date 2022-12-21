@@ -12,6 +12,7 @@ export const Input = styled.input`
   padding: 0 10px;
   font-size: 15px;
   margin-right: 15px;
+  border-radius: 5px;
 `;
 export const Button = styled.button`
   height: 29px;
