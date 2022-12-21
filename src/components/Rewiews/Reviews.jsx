@@ -35,8 +35,8 @@ const Reviews = () => {
         <h3>Sorry, we didn't find anything</h3>
       ) : (
         <ul>
-          {reviews.map(({ author, content }) => (
-            <Item key={author}>
+          {reviews.map(({ author, content, id }) => (
+            <Item key={id}>
               <h3>Author: {author}</h3>
               <p>{content}</p>
             </Item>

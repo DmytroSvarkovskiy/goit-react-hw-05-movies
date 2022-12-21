@@ -43,7 +43,7 @@ const Cast = () => {
                 alt={name}
               />
               <P>{name}</P>
-              <P>Character: {character}</P>
+              <P>Character: {character ? character : 'undefined'}</P>
             </Item>
           ))
         )}
