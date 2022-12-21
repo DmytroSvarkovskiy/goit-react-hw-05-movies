@@ -72,7 +72,9 @@ const Movies = () => {
       <ToastContainer />
       {loader && <Loader />}
       {error ? (
-        <h2>Sorry, something went wrong. Please try again</h2>
+        <h2>
+          Sorry, something went wrong. Please reload the page and try again
+        </h2>
       ) : (
         <FilmList>
           {searchres !== [] &&

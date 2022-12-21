@@ -48,7 +48,6 @@ const MovieDetails = () => {
     vote_average,
     title,
     release_date,
-    production_countries,
   } = fullInfo;
 
   if (!release_date) {
@@ -79,8 +78,6 @@ const MovieDetails = () => {
             <P>{overview}</P>
             <h4>Genres</h4>
             <P>{genres.map(({ name }) => name).join(', ')}</P>
-            <h4>Country</h4>
-            <P>{production_countries[0].name}</P>
           </Cont>
         </Wrap>
         <AdditionalDiv>
