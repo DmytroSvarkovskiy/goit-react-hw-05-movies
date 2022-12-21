@@ -8,9 +8,10 @@ export const Button = styled(Link)`
   display: flex;
   border: 0;
   cursor: pointer;
+  background-color: #e9e8e8f5;
   border-radius: 5px;
   height: 25px;
-  width: 85px;
+  width: 100px;
   justify-content: center;
   align-items: center;
   :hover {
@@ -21,9 +22,9 @@ export const Button = styled(Link)`
       color: red;
     }
     color: #ffffff;
-    transition: all 0.3s;
   }
   margin-bottom: 15px;
+  transition: all 0.3s;
 `;
 export const Wrap = styled.div`
   display: flex;

@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
 import Loader from '../Loader/Loader';
 import { fetch } from 'components/Fetch';
@@ -12,12 +13,14 @@ const Cast = () => {
   const defaultImg = `https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-no-image-available-icon-flat.jpg`;
 
   useEffect(() => {
+    setError(false);
     const actorsList = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=7bfeb33324f72574136d1cd14ae769b5&language=en-US`;
     const getApi = async () => {
       setLoader(true);
       try {
         const getInfo = await fetch(actorsList);
         setCast(getInfo.cast);
+        getInfo.cast.length === 0 && toast("Sorry, we didn't find anything");
       } catch {
         setError(true);
       } finally {
@@ -30,7 +33,7 @@ const Cast = () => {
   return (
     <>
       {error && <h2>Sorry, something went wrong. Please try again</h2>}
-
+      <ToastContainer />
       <List>
         {loader ? (
           <Loader />
