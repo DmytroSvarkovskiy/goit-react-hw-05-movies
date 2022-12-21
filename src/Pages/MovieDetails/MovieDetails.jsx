@@ -1,5 +1,5 @@
 import { Wrapper } from 'Pages/Home/Home.styled';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetch } from 'components/Fetch';
 import Loader from '../../components/Loader/Loader';
@@ -27,9 +27,8 @@ const MovieDetails = () => {
 
   useEffect(() => {
     const fullInfoLink = `https://api.themoviedb.org/3/movie/${id}?api_key=7bfeb33324f72574136d1cd14ae769b5&language=en-US`;
-
+    setLoader(true);
     const getApi = async () => {
-      setLoader(true);
       try {
         const getInfo = await fetch(fullInfoLink);
         setFullInfo(getInfo);
@@ -49,11 +48,13 @@ const MovieDetails = () => {
     vote_average,
     title,
     release_date,
+    production_countries,
   } = fullInfo;
 
   if (!release_date) {
     return;
   }
+
   return (
     <Wrapper>
       {loader && <Loader />}
@@ -73,11 +74,13 @@ const MovieDetails = () => {
             <h3>
               {title ?? name} ({release_date.slice(0, 4)})
             </h3>
-            <P>User Score: {(vote_average * 10).toFixed(1)}%</P>
+            <h4>User Score: {(vote_average * 10).toFixed(1)}%</h4>
             <h4>Overview</h4>
             <P>{overview}</P>
             <h4>Genres</h4>
             <P>{genres.map(({ name }) => name).join(', ')}</P>
+            <h4>Country</h4>
+            <P>{production_countries[0].name}</P>
           </Cont>
         </Wrap>
         <AdditionalDiv>
@@ -91,7 +94,9 @@ const MovieDetails = () => {
             </LinkInfo>
           </LinkDiv>
         </AdditionalDiv>
-        <Outlet />
+        <Suspense ffullback={null}>
+          <Outlet />
+        </Suspense>
       </>
     </Wrapper>
   );

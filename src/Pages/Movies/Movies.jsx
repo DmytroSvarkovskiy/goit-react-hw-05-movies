@@ -76,7 +76,7 @@ const Movies = () => {
       ) : (
         <FilmList>
           {searchres !== [] &&
-            searchres.map(({ id, name, title, poster_path }) => (
+            searchres.map(({ id, name, title, poster_path, release_date }) => (
               <Item key={id}>
                 <LinkItem to={`${id}`} state={{ from: location }}>
                   {' '}
@@ -85,7 +85,11 @@ const Movies = () => {
                     alt={name}
                     loading="lazy"
                   />
-                  {title ?? name}
+                  {title ?? name} (
+                  {release_date !== ''
+                    ? release_date.slice(0, 4)
+                    : 'unknown year'}
+                  )
                 </LinkItem>
               </Item>
             ))}

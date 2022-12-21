@@ -36,7 +36,7 @@ export const Wrap = styled.div`
 export const Cont = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
   padding: 20px;
 `;
 export const P = styled.p`

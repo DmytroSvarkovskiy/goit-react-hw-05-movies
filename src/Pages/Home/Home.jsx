@@ -37,7 +37,7 @@ const Home = () => {
             <Loader />
           ) : (
             <FilmList>
-              {films.map(({ id, name, title, poster_path }) => (
+              {films.map(({ id, name, title, poster_path, release_date }) => (
                 <Item key={id}>
                   <LinkItem to={`/movies/${id}`} state={{ from: '/' }}>
                     {' '}
@@ -48,7 +48,11 @@ const Home = () => {
                       alt={name}
                       loading="lazy"
                     />
-                    {title ?? name}
+                    {title ?? name} (
+                    {release_date !== ''
+                      ? release_date.slice(0, 4)
+                      : 'unknown year'}
+                    )
                   </LinkItem>
                 </Item>
               ))}
