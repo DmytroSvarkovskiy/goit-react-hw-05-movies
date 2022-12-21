@@ -79,23 +79,25 @@ const Movies = () => {
       ) : (
         <FilmList>
           {searchres !== [] &&
-            searchres.map(({ id, name, title, poster_path, release_date }) => (
-              <Item key={id}>
-                <LinkItem to={`${id}`} state={{ from: location }}>
-                  {' '}
-                  <Img
-                    src={poster_path ? imgLink + poster_path : defaultImg}
-                    alt={name}
-                    loading="lazy"
-                  />
-                  {title ?? name} (
-                  {release_date !== ''
-                    ? release_date.slice(0, 4)
-                    : 'unknown year'}
-                  )
-                </LinkItem>
-              </Item>
-            ))}
+            searchres.map(
+              ({ id, name, title, poster_path, release_date = [] }) => (
+                <Item key={id}>
+                  <LinkItem to={`${id}`} state={{ from: location }}>
+                    {' '}
+                    <Img
+                      src={poster_path ? imgLink + poster_path : defaultImg}
+                      alt={name}
+                      loading="lazy"
+                    />
+                    {title ?? name} (
+                    {release_date !== ''
+                      ? release_date.slice(0, 4)
+                      : 'unknown year'}
+                    )
+                  </LinkItem>
+                </Item>
+              )
+            )}
         </FilmList>
       )}
     </Wrapper>
