@@ -19,7 +19,6 @@ const Reviews = () => {
         const getInfo = await fetch(reviewsLink);
         setReviews(getInfo.results);
       } catch (error) {
-        // setError(true);
         console.log(error);
       } finally {
         setLoading(false);

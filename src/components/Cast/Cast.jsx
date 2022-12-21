@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
 import Loader from '../Loader/Loader';
 import { fetch } from 'components/Fetch';
 import { Img, List, Item, P } from './Cast.styled';
+
 const Cast = () => {
   const [cast, setCast] = useState([]);
   const [error, setError] = useState(false);
@@ -20,7 +20,6 @@ const Cast = () => {
       try {
         const getInfo = await fetch(actorsList);
         setCast(getInfo.cast);
-        getInfo.cast.length === 0 && toast("Sorry, we didn't find anything");
       } catch {
         setError(true);
       } finally {
@@ -28,12 +27,13 @@ const Cast = () => {
       }
     };
     getApi();
-  }, [id]);
+  }, [cast.length, id]);
 
   return (
     <>
-      {error && <h2>Sorry, something went wrong. Please try again</h2>}
-      <ToastContainer />
+      {/* {loading && <Loader />} */}
+
+      {/* {error && <h2>Sorry, something went wrong. Please try again</h2>} */}
       <List>
         {loader ? (
           <Loader />
