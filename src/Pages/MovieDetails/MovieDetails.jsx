@@ -1,6 +1,6 @@
 import { Wrapper } from 'Pages/Home/Home.styled';
 import { useState, useEffect } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetch } from 'components/Fetch';
 import Loader from '../../components/Loader/Loader';
 import {
@@ -20,6 +20,8 @@ const MovieDetails = () => {
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
   const { id } = useParams();
+  const location = useLocation();
+  const backAdress = location.state ? location.state.from : `/movies`;
 
   const firstImgLink = 'https://image.tmdb.org/t/p/w300';
   const defaultImg = `https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-no-image-available-icon-flat.jpg`;
@@ -56,7 +58,7 @@ const MovieDetails = () => {
   return (
     <Wrapper>
       {loader && <Loader />}
-      <Button>
+      <Button to={backAdress}>
         <Arrow />
         Go back
       </Button>

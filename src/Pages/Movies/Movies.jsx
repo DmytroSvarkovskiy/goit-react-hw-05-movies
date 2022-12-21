@@ -8,6 +8,7 @@ import { FilmList, Item, LinkItem, Img } from 'Pages/Home/Home.styled';
 import { Form, Input, Button, Label } from './Movies.styled';
 import Loader from 'components/Loader/Loader';
 import { useLocation } from 'react-router-dom';
+// import { useMemo } from 'react';
 
 const Movies = () => {
   const [qwery, setQwery] = useState('');
@@ -22,7 +23,9 @@ const Movies = () => {
   const defaultImg = `https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-no-image-available-icon-flat.jpg`;
   const findFilms = `https://api.themoviedb.org/3/search/movie?api_key=7bfeb33324f72574136d1cd14ae769b5&language=en-US&query=${qwery}&page=1&include_adult=false`;
   const location = useLocation();
-  console.log(location);
+  // useMemo(() => {
+  //   console.log(location);
+  // }, [location]);
 
   const onSubmit = value => {
     if (qwery === value.name) {
@@ -74,7 +77,7 @@ const Movies = () => {
           {searchres !== [] &&
             searchres.map(({ id, name, title, poster_path }) => (
               <Item key={id}>
-                <LinkItem to={`/movies/${id}`}>
+                <LinkItem to={`${id}`} state={{ from: location }}>
                   {' '}
                   <Img
                     src={poster_path ? imgLink + poster_path : defaultImg}

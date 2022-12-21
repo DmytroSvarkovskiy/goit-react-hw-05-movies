@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { BiArrowBack } from 'react-icons/bi';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 export const Arrow = styled(BiArrowBack)`
   margin-right: 5px;
 `;
-export const Button = styled.button`
+export const Button = styled(Link)`
   display: flex;
   border: 0;
   cursor: pointer;
