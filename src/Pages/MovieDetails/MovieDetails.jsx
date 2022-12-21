@@ -22,7 +22,6 @@ const MovieDetails = () => {
   const { id } = useParams();
   const location = useLocation();
   const backAdress = location.state ? location.state.from : `/movies`;
-
   const firstImgLink = 'https://image.tmdb.org/t/p/w300';
   const defaultImg = `https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-no-image-available-icon-flat.jpg`;
 
@@ -84,8 +83,12 @@ const MovieDetails = () => {
         <AdditionalDiv>
           <h4>Additional Information</h4>
           <LinkDiv>
-            <LinkInfo to="cast">Cast</LinkInfo>
-            <LinkInfo to="reviews">Reviews</LinkInfo>
+            <LinkInfo to="cast" state={{ from: backAdress }}>
+              Cast
+            </LinkInfo>
+            <LinkInfo to="reviews" state={{ from: backAdress }}>
+              Reviews
+            </LinkInfo>
           </LinkDiv>
         </AdditionalDiv>
         <Outlet />

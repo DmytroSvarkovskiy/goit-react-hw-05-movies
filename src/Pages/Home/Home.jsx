@@ -39,7 +39,7 @@ const Home = () => {
             <FilmList>
               {films.map(({ id, name, title, poster_path }) => (
                 <Item key={id}>
-                  <LinkItem to={`/movies/${id}`}>
+                  <LinkItem to={`/movies/${id}`} state={{ from: '/' }}>
                     {' '}
                     <Img
                       src={
