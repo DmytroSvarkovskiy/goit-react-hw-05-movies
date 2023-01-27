@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Movies = () => {
   const [qwery, setQwery] = useState('');
-  const [searchres, setSearchres] = useState([]);
+  const [searchRes, setSearchRes] = useState([]);
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams({});
@@ -30,7 +30,7 @@ const Movies = () => {
     }
     reset();
     setError(false);
-    setSearchres([]);
+    setSearchRes([]);
     setSearchParams({ search: value.name });
     setQwery(value.name);
   };
@@ -45,7 +45,7 @@ const Movies = () => {
       setLoader(true);
       try {
         const getTop = await fetch(findFilms);
-        setSearchres(getTop.results);
+        setSearchRes(getTop.results);
 
         getTop.total_results === 0 && toast("Sorry,we didn't find anything");
       } catch {
@@ -78,8 +78,8 @@ const Movies = () => {
         </h2>
       ) : (
         <FilmList>
-          {searchres !== [] &&
-            searchres.map(
+          {searchRes !== [] &&
+            searchRes.map(
               ({ id, name, title, poster_path, release_date = [] }) => (
                 <Item key={id}>
                   <LinkItem to={`${id}`} state={{ from: location }}>
